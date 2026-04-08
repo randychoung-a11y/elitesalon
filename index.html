@@ -1,236 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Elite Salon</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<title>Elite Salon | San Jose</title>
+<meta name="description" content="Elite Salon in San Jose. Haircuts, styling, beauty services, and premium hair products. Book your appointment today.">
 
-    body {
-      background: #f8f8f8;
-      color: #333;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    header {
-      background: #111;
-      color: white;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-    }
+<style>
+:root {
+  --primary:#111;
+  --accent:#f4b400;
+}
 
-    header h1 {
-      font-size: 24px;
-    }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 400;
-    }
+body { background:#f9f9f9; }
 
-    nav a:hover {
-      color: #f4b400;
-    }
+/* HEADER */
+header {
+  background:var(--primary);
+  color:#fff;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
-    .hero {
-      height: 90vh;
-      background: url('https://via.placeholder.com/1600x900') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-    }
+nav a {
+  color:#fff;
+  margin-left:20px;
+  text-decoration:none;
+}
 
-    .hero h2 {
-      font-size: 48px;
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 10px;
-    }
+nav a:hover { color:var(--accent); }
 
-    section {
-      padding: 60px 40px;
-    }
+/* HERO */
+.hero {
+  height:85vh;
+  background:url('https://via.placeholder.com/1600x900') center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  text-align:center;
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 28px;
-    }
+.hero h1 {
+  font-size:50px;
+  background:rgba(0,0,0,0.6);
+  padding:20px;
+  border-radius:10px;
+}
 
-    .services, .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+.btn {
+  margin-top:15px;
+  padding:12px 20px;
+  background:var(--accent);
+  border:none;
+  cursor:pointer;
+  border-radius:5px;
+  font-weight:600;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+/* SECTION */
+section { padding:60px 40px; }
+h2 { text-align:center; margin-bottom:30px; }
 
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-    }
+/* CARD */
+.card {
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  text-align:center;
+}
 
-    .portfolio img {
-      width: 100%;
-      border-radius: 10px;
-    }
+/* GALLERY */
+.gallery img {
+  width:100%;
+  border-radius:10px;
+  cursor:pointer;
+}
 
-    .contact {
-      text-align: center;
-    }
+/* LIGHTBOX */
+#lightbox {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+}
+#lightbox img {
+  max-width:80%;
+  border-radius:10px;
+}
 
-    .contact p {
-      margin: 10px 0;
-    }
+/* CART */
+#cart {
+  position:fixed;
+  right:0;
+  top:0;
+  width:280px;
+  height:100%;
+  background:#fff;
+  padding:20px;
+  overflow:auto;
+  box-shadow:-3px 0 10px rgba(0,0,0,0.2);
+}
 
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+/* FORM */
+form input, form select {
+  width:100%;
+  margin:10px 0;
+  padding:10px;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #f4b400;
-      color: black;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-    }
+/* FOOTER */
+footer {
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:20px;
+}
 
-    .btn:hover {
-      background: #d99a00;
-    }
-  </style>
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#25D366;
+  color:#fff;
+  padding:12px;
+  border-radius:50%;
+  font-size:20px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Elite Salon</h1>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header>
+  <h2>Elite Salon</h2>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#products">Shop</a>
+    <a href="#booking">Book</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <div class="hero">
-    <h2>Style. Beauty. Confidence.</h2>
-  </div>
+<div class="hero">
+  <h1>Elite Salon Experience</h1>
+  <button class="btn" onclick="scrollToSection('booking')">Book Appointment</button>
+</div>
 
-  <!-- Services -->
-  <section id="services">
-    <h2 class="section-title">Our Services</h2>
-    <div class="services">
+<!-- SERVICES -->
+<section id="services">
+<h2>Services</h2>
+<div class="grid">
+<div class="card">Haircut</div>
+<div class="card">Coloring</div>
+<div class="card">Facial</div>
+</div>
+</section>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Haircut</h3>
-        <p>Professional styling for men & women.</p>
-      </div>
+<!-- GALLERY -->
+<section id="gallery">
+<h2>Gallery</h2>
+<div class="grid gallery">
+<img src="https://via.placeholder.com/300" onclick="openLightbox(this.src)">
+<img src="https://via.placeholder.com/300" onclick="openLightbox(this.src)">
+<img src="https://via.placeholder.com/300" onclick="openLightbox(this.src)">
+</div>
+</section>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Hair Coloring</h3>
-        <p>Modern color techniques & trends.</p>
-      </div>
+<div id="lightbox" onclick="this.style.display='none'">
+<img id="lightbox-img">
+</div>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Facial & Skin Care</h3>
-        <p>Relax and refresh your skin.</p>
-      </div>
+<!-- PRODUCTS -->
+<section id="products">
+<h2>Products</h2>
+<div class="grid">
 
-    </div>
-  </section>
+<div class="card">
+<h3>Hair Oil</h3>
+<p>$15</p>
+<button class="btn" onclick="addToCart('Hair Oil',15)">Add</button>
+</div>
 
-  <!-- Portfolio -->
-  <section id="portfolio">
-    <h2 class="section-title">Our Work</h2>
-    <div class="portfolio">
-      <img src="https://via.placeholder.com/300" alt="">
-      <img src="https://via.placeholder.com/300" alt="">
-      <img src="https://via.placeholder.com/300" alt="">
-      <img src="https://via.placeholder.com/300" alt="">
-    </div>
-  </section>
+<div class="card">
+<h3>Shampoo</h3>
+<p>$12</p>
+<button class="btn" onclick="addToCart('Shampoo',12)">Add</button>
+</div>
 
-  <!-- Products -->
-  <section id="products">
-    <h2 class="section-title">Products</h2>
-    <div class="products">
+</div>
+</section>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Hair Oil</h3>
-        <p>$15</p>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
+<!-- BOOKING -->
+<section id="booking">
+<h2>Book Appointment</h2>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Shampoo</h3>
-        <p>$12</p>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
+<form onsubmit="book(event)">
+<input type="text" placeholder="Name" required>
+<input type="tel" placeholder="Phone" required>
+<select>
+<option>Haircut</option>
+<option>Coloring</option>
+</select>
+<input type="date" required>
+<input type="time" required>
+<button class="btn">Submit</button>
+</form>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Hair Serum</h3>
-        <p>$18</p>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
+</section>
 
-    </div>
-  </section>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
 
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <p><strong>Address:</strong> 123 Beauty Street, Your City</p>
-    <p><strong>Phone:</strong> +1 234 567 890</p>
-    <p><strong>Email:</strong> info@elitesalon.com</p>
-    <a href="#" class="btn">Book Appointment</a>
-  </section>
+<p>📍 6049 Snell Ave, San Jose, CA 95123</p>
+<p>📞 408-838-4511</p>
+<p>⏰ Mon-Sat: 10AM - 6PM</p>
 
-  <footer>
-    <p>© 2026 Elite Salon. All rights reserved.</p>
-  </footer>
+<iframe src="https://maps.google.com/maps?q=6049%20Snell%20Ave%20San%20Jose%20CA&t=&z=13&output=embed" height="300"></iframe>
+
+</section>
+
+<!-- CART -->
+<div id="cart">
+<h3>Cart</h3>
+<ul id="cart-items"></ul>
+<p>Total: $<span id="total">0</span></p>
+<button class="btn" onclick="checkout()">Checkout</button>
+</div>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/14088384511" target="_blank">💬</a>
+
+<footer>
+<p>© 2026 Elite Salon</p>
+</footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function addToCart(name, price){
+cart.push({name,price});
+localStorage.setItem('cart', JSON.stringify(cart));
+renderCart();
+}
+
+function renderCart(){
+let list=document.getElementById('cart-items');
+let total=0;
+list.innerHTML='';
+cart.forEach((item,i)=>{
+total+=item.price;
+list.innerHTML+=`<li>${item.name} $${item.price} <button onclick="removeItem(${i})">x</button></li>`;
+});
+document.getElementById('total').innerText=total;
+}
+
+function removeItem(i){
+cart.splice(i,1);
+localStorage.setItem('cart', JSON.stringify(cart));
+renderCart();
+}
+
+function checkout(){
+alert("Stripe integration placeholder 🚀");
+}
+
+function openLightbox(src){
+document.getElementById('lightbox').style.display='flex';
+document.getElementById('lightbox-img').src=src;
+}
+
+function book(e){
+e.preventDefault();
+alert("Booking request sent! (connect backend later)");
+}
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+renderCart();
+</script>
 
 </body>
 </html>
