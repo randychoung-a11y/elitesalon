@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elite Salon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f8f8f8;
+      color: #333;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    nav a:hover {
+      color: #f4b400;
+    }
+
+    .hero {
+      height: 90vh;
+      background: url('https://via.placeholder.com/1600x900') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    section {
+      padding: 60px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+
+    .services, .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .portfolio img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      margin: 10px 0;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #f4b400;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: #d99a00;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Elite Salon</h1>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Style. Beauty. Confidence.</h2>
+  </div>
+
+  <!-- Services -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services">
+
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <h3>Haircut</h3>
+        <p>Professional styling for men & women.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <h3>Hair Coloring</h3>
+        <p>Modern color techniques & trends.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <h3>Facial & Skin Care</h3>
+        <p>Relax and refresh your skin.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2 class="section-title">Our Work</h2>
+    <div class="portfolio">
+      <img src="https://via.placeholder.com/300" alt="">
+      <img src="https://via.placeholder.com/300" alt="">
+      <img src="https://via.placeholder.com/300" alt="">
+      <img src="https://via.placeholder.com/300" alt="">
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products">
+    <h2 class="section-title">Products</h2>
+    <div class="products">
+
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <h3>Hair Oil</h3>
+        <p>$15</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <h3>Shampoo</h3>
+        <p>$12</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="">
+        <h3>Hair Serum</h3>
+        <p>$18</p>
+        <a href="#" class="btn">Buy Now</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p><strong>Address:</strong> 123 Beauty Street, Your City</p>
+    <p><strong>Phone:</strong> +1 234 567 890</p>
+    <p><strong>Email:</strong> info@elitesalon.com</p>
+    <a href="#" class="btn">Book Appointment</a>
+  </section>
+
+  <footer>
+    <p>© 2026 Elite Salon. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
