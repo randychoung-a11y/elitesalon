@@ -81,6 +81,7 @@ font-size:12px;
 letter-spacing:0.12em;
 border-radius:4px;
 transition:0.2s;
+cursor:pointer;
 }
 
 .cta-btn:hover {
@@ -131,12 +132,14 @@ color:var(--muted);
 margin-bottom:20px;
 }
 
+/* HIDDEN BY DEFAULT */
 .booking iframe {
 width:100%;
 height:650px;
 border:none;
 border-radius:10px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
+display:none;
 }
 
 footer {
@@ -167,12 +170,8 @@ font-size:12px;
     <h1>Elite <em>Salon</em></h1>
     <p>Hair · Color · Beauty</p>
 
-    <!-- PRIMARY BOOKING BUTTON (ALWAYS WORKS) -->
-    <a href="https://calendar.google.com/appointments/schedules/YOUR_APPOINTMENT_LINK"
-       target="_blank"
-       class="cta-btn">
-       Book Appointment
-    </a>
+    <!-- HERO BUTTON -->
+    <a href="#booking" class="cta-btn">Book Appointment</a>
   </div>
 </section>
 
@@ -190,19 +189,16 @@ font-size:12px;
 </div>
 
 <!-- BOOKING SECTION -->
-<section class="booking">
+<section class="booking" id="booking">
   <h2>Book Your Appointment</h2>
   <p>Select a time that works for you</p>
 
-  <!-- BUTTON (PRIMARY METHOD) -->
-  <a href="https://www.jotform.com/build/260986452561162?s=templates"
-     target="_blank"
-     class="cta-btn">
-     Open Booking Page
-  </a>
+  <!-- BUTTON TO SHOW FORM -->
+  <a class="cta-btn" onclick="openBooking()">Open Booking Page</a>
 
-  <!-- OPTIONAL EMBED (MAY NOT WORK FOR ALL ACCOUNTS) -->
+  <!-- HIDDEN FORM -->
   <iframe 
+    id="bookingFrame"
     src="https://www.jotform.com/build/260986452561162?s=templates">
   </iframe>
 
@@ -212,9 +208,20 @@ font-size:12px;
   <p>© 2026 Elite Salon · San Jose, CA</p>
 </footer>
 
+<script>
+function openBooking() {
+  const frame = document.getElementById("bookingFrame");
+
+  // show form
+  frame.style.display = "block";
+
+  // hide button after click (optional)
+  document.querySelector("#booking .cta-btn").style.display = "none";
+
+  // smooth scroll
+  frame.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
 </body>
 </html>
-
-
-
-
