@@ -233,7 +233,8 @@ document.getElementById('calendarForm').addEventListener('submit', function(e) {
   const location = '6049 Snell Ave, San Jose, CA 95123';
   const title = 'Elite Salon Appointment';
 
-  const url = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(title)}&dates=${start}/${end}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+  
+  const url = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(title)}&dates=${start}/${end}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}&add=randychoung@gmail.com`;
 
   window.open(url,'_blank');
 });
