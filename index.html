@@ -205,7 +205,33 @@ footer { justify-content: center; text-align: center; }
   <img src="assets/images/Screenshot_20260408_150143_Chrome.jpg" width="75%" alt="Hair styling">
   <img src="assets/images/Screenshot_20260408_150205_Chrome.jpg" width="75%" alt="Hair coloring">
 </section>
-  
+
+<div class="detail-row">
+  <div class="d-icon">📅</div>
+  <div style="width:100%;">
+    <div class="d-label">Book Appointment</div>
+
+    <form action="https://formsubmit.co/lillythai.elitesalon@gmail.com" method="POST">
+      
+      <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:10px;margin-bottom:10px;">
+      
+      <input type="tel" name="phone" placeholder="Phone Number" required style="width:100%;padding:10px;margin-bottom:10px;">
+      
+      <input type="date" name="date" required style="width:100%;padding:10px;margin-bottom:10px;">
+      
+      <input type="time" name="time" required style="width:100%;padding:10px;margin-bottom:10px;">
+      
+      <textarea name="service" placeholder="Service (Haircut, Color, etc.)" required style="width:100%;padding:10px;margin-bottom:10px;"></textarea>
+
+      <!-- Optional settings -->
+      <input type="hidden" name="_subject" value="New Appointment Booking">
+      <input type="hidden" name="_captcha" value="false">
+
+      <button type="submit" class="cta-btn" style="margin-top:10px;">Book Now</button>
+    </form>
+
+  </div>
+</div>
 <footer>
   <div class="footer-logo">Elite <span>Salon</span></div>
   <p>© 2026 Elite Salon · San Jose, CA</p>
