@@ -197,33 +197,48 @@ footer { justify-content: center; text-align: center; }
     <div class="hours-row closed"><div class="day">Sun</div><div class="time">Closed</div></div>
   </div>
 </div>
-
 <div class="detail-row">
   <div class="d-icon">📅</div>
   <div style="width:100%;">
     <div class="d-label">Book Appointment</div>
 
-    <form action="https://formsubmit.co/randychoung@gmail.com" method="POST">
-      
-      <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:4px;margin-bottom:10px;">
-      
-      <input type="tel" name="phone" placeholder="Phone Number" required style="width:100%;padding:4px;margin-bottom:10px;">
-      
-      <input type="date" name="date" required style="width:100%;padding:4px;margin-bottom:10px;">
-      
-      <input type="time" name="time" required style="width:100%;padding:4px;margin-bottom:10px;">
-      
-      <textarea name="service" placeholder="Service (Haircut, Color, etc.)" required style="width:100%;padding:4px;margin-bottom:10px;"></textarea>
-
-      <!-- Optional settings -->
-      <input type="hidden" name="_subject" value="New Appointment Booking">
-      <input type="hidden" name="_captcha" value="false">
-
-      <button type="submit" class="cta-btn" style="margin-top:10px;">Book Now</button>
+    <form id="calendarForm" style="display:flex;flex-direction:column;gap:6px;">
+      <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:6px 8px;font-size:12px;">
+      <input type="tel" name="phone" placeholder="Phone Number" required style="width:100%;padding:6px 8px;font-size:12px;">
+      <input type="date" name="date" required style="width:100%;padding:6px 8px;font-size:12px;">
+      <input type="time" name="time" required style="width:100%;padding:6px 8px;font-size:12px;">
+      <textarea name="service" placeholder="Service (Haircut, Color, etc.)" required style="width:100%;padding:6px 8px;font-size:12px;height:50px;"></textarea>
+      <button type="submit" class="cta-btn" style="margin-top:6px;padding:8px 16px;font-size:12px;">Book Now</button>
     </form>
 
   </div>
 </div>
+
+<script>
+document.getElementById('calendarForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = this.name.value;
+  const phone = this.phone.value;
+  const service = this.service.value;
+  const date = this.date.value; // format: YYYY-MM-DD
+  const time = this.time.value; // format: HH:MM
+
+  // Combine date & time into Google Calendar datetime format YYYYMMDDTHHMM00
+  const start = date.replace(/-/g,'') + 'T' + time.replace(':','') + '00';
+  const endHour = parseInt(time.split(':')[0]) + 1; // 1-hour default
+  const end = date.replace(/-/g,'') + 'T' + (endHour < 10 ? '0':'') + endHour + time.split(':')[1] + '00';
+
+  const details = `Name: ${name}\nPhone: ${phone}\nService: ${service}`;
+  const location = '6049 Snell Ave, San Jose, CA 95123';
+  const title = 'Elite Salon Appointment';
+
+  const url = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(title)}&dates=${start}/${end}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+
+  window.open(url,'_blank');
+});
+</script>
+
 <footer>
   <div class="footer-logo">Elite <span>Salon</span></div>
   <p>© 2026 Elite Salon · San Jose, CA</p>  
