@@ -24,11 +24,13 @@ body {
   color: var(--black);
 }
 
-/* HEADER */
 header {
-position: fixed; top:0; left:0; right:0;
+position: fixed;
+top:0; left:0; right:0;
 height:64px;
-display:flex; justify-content:space-between; align-items:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
 padding:0 30px;
 background: rgba(0,0,0,0.9);
 color:white;
@@ -39,9 +41,9 @@ z-index:100;
 font-family: 'Cormorant Garamond', serif;
 font-size:22px;
 }
+
 .logo span { color: var(--gold); }
 
-/* HERO */
 .hero {
 height:100vh;
 display:flex;
@@ -59,6 +61,7 @@ font-family: 'Cormorant Garamond', serif;
 font-size: clamp(50px, 8vw, 100px);
 font-weight:300;
 }
+
 .hero h1 em { color: var(--gold); }
 
 .hero p {
@@ -67,7 +70,24 @@ letter-spacing:0.1em;
 font-size:14px;
 }
 
-/* INFO */
+.cta-btn {
+display:inline-block;
+margin-top:25px;
+padding:14px 36px;
+background: var(--gold);
+color:black;
+text-decoration:none;
+font-size:12px;
+letter-spacing:0.12em;
+border-radius:4px;
+transition:0.2s;
+}
+
+.cta-btn:hover {
+background:#d4b896;
+transform:translateY(-2px);
+}
+
 .info {
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -80,8 +100,8 @@ background: var(--cream);
 
 .info-text h2 {
 font-family:'Cormorant Garamond', serif;
-font-size:40px;
 font-weight:300;
+font-size:40px;
 margin-bottom:20px;
 }
 
@@ -92,37 +112,109 @@ min-height:400px;
 border:none;
 }
 
-/* FORM SECTION */
 .booking {
 padding:60px 30px;
+text-align:center;
 background:white;
 }
 
-.section-label {
-font-size:11px;
-letter-spacing:0.2em;
-text-transform:uppercase;
-color: var(--gold);
+.booking h2 {
+font-family:'Cormorant Garamond', serif;
+font-size:36px;
+font-weight:300;
+margin-bottom:10px;
+}
+
+.booking p {
+font-size:13px;
+color:var(--muted);
 margin-bottom:20px;
 }
 
-.form-box {
-max-width:500px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-
-.form-box input,
-.form-box textarea {
+.booking iframe {
 width:100%;
-padding:10px;
-border:1px solid #ddd;
-font-size:13px;
-border-radius:4px;
+height:650px;
+border:none;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
-.fo
+footer {
+padding:20px;
+background:black;
+color:white;
+text-align:center;
+font-size:12px;
+}
+
+@media(max-width:700px){
+.info { grid-template-columns:1fr; }
+.info-text { padding:40px 20px; }
+.booking { padding:40px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Elite <span>Salon</span></div>
+  <div>📞 (408) 838-4511</div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Elite <em>Salon</em></h1>
+    <p>Hair · Color · Beauty</p>
+
+    <!-- PRIMARY BOOKING BUTTON (ALWAYS WORKS) -->
+    <a href="https://calendar.google.com/appointments/schedules/YOUR_APPOINTMENT_LINK"
+       target="_blank"
+       class="cta-btn">
+       Book Appointment
+    </a>
+  </div>
+</section>
+
+<div class="info">
+  <div class="info-text">
+    <h2>Visit Us</h2>
+    <p>📍 6049 Snell Ave<br>San Jose, CA 95123</p>
+    <p>📞 (408) 838-4511</p>
+    <p>⏰ Mon–Sat: 10AM–6PM<br>Sunday: Closed</p>
+  </div>
+
+  <div class="map-wrap">
+    <iframe src="https://maps.google.com/maps?q=6049+Snell+Ave+San+Jose+CA+95123&z=15&output=embed"></iframe>
+  </div>
+</div>
+
+<!-- BOOKING SECTION -->
+<section class="booking">
+  <h2>Book Your Appointment</h2>
+  <p>Select a time that works for you</p>
+
+  <!-- BUTTON (PRIMARY METHOD) -->
+  <a href="https://www.jotform.com/build/260986452561162?s=templates"
+     target="_blank"
+     class="cta-btn">
+     Open Booking Page
+  </a>
+
+  <!-- OPTIONAL EMBED (MAY NOT WORK FOR ALL ACCOUNTS) -->
+  <iframe 
+    src="https://www.jotform.com/build/260986452561162?s=templates">
+  </iframe>
+
+</section>
+
+<footer>
+  <p>© 2026 Elite Salon · San Jose, CA</p>
+</footer>
+
+</body>
+</html>
+
+
 
 
