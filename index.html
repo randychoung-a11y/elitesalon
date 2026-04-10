@@ -50,6 +50,26 @@ header {
 
 .logo span { color:var(--gold); }
 
+/* SOCIAL ICONS */
+.social-icons {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.social-icons a {
+  color:white;
+  font-size:16px;
+  text-decoration:none;
+  opacity:0.8;
+  transition:0.3s;
+}
+
+.social-icons a:hover {
+  color:var(--gold);
+  opacity:1;
+}
+
 /* NAV */
 .nav a {
   color:white;
@@ -206,8 +226,20 @@ footer {
 <body>
 
 <header>
-  <div class="logo">Elite <span>Salon</span></div>
 
+  <!-- LEFT SIDE -->
+  <div style="display:flex; align-items:center; gap:15px;">
+    
+    <div class="social-icons">
+      <a href="https://www.facebook.com/people/Elite-Salon-Spa/100063563171901/#" target="_blank">📘</a>
+      <a href="https://www.yelp.com/biz/elite-salon-and-spa-san-jose-4" target="_blank">⭐</a>
+    </div>
+
+    <div class="logo">Elite <span>Salon</span></div>
+
+  </div>
+
+  <!-- NAV -->
   <nav class="nav">
     <a class="tab active" onclick="showTab(event, 'home')">Home</a>
     <a class="tab" onclick="showTab(event, 'services')">Services</a>
@@ -218,7 +250,9 @@ footer {
     <a class="tab" onclick="showTab(event, 'booking')">Booking</a>
   </nav>
 
+  <!-- PHONE -->
   <div>📞 (408) 838-4511</div>
+
 </header>
 
 <!-- HOME -->
@@ -226,7 +260,7 @@ footer {
   <div class="hero">
     <div>
       <h1>Elite <em>Salon</em></h1>
-      <p>Get styled by San Jose’s most creative professionals. From edgy cuts to dimensional color, we design standout looks for the Bay Area trendsetter.</p>
+      <p>Get styled by San Jose’s most creative professionals.</p>
       <a class="cta-btn" onclick="showTab(event, 'booking')">Book Appointment</a>
     </div>
   </div>
@@ -293,7 +327,6 @@ footer {
 <!-- IMAGES -->
 <section id="images" class="section">
   <div class="gallery">
-
     <img src="assets/images/Screenshot_20260408_150057_Chrome.jpg">
     <img src="assets/images/Screenshot_20260408_150104_Chrome.jpg">
     <img src="assets/images/Screenshot_20260408_150118_Chrome.jpg">
@@ -304,7 +337,6 @@ footer {
     <img src="assets/images/o%20(3).jpg">
     <img src="assets/images/o%20(4).jpg">
     <img src="assets/images/o.jpg">
-
   </div>
 </section>
 
@@ -348,6 +380,3 @@ function openBooking() {
 
 </body>
 </html>
-
-
-
