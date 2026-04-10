@@ -43,7 +43,6 @@ color:white;
 z-index:100;
 }
 
-/* NEW: SOCIAL ICONS */
 .social-icons {
 display:flex;
 align-items:center;
@@ -166,6 +165,21 @@ margin-bottom:15px;
 font-weight:300;
 }
 
+/* STATUS */
+#status {
+font-size:18px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.open {
+color:limegreen;
+}
+
+.closed {
+color:red;
+}
+
 /* MAP */
 iframe {
 width:100%;
@@ -228,7 +242,6 @@ font-size:12px;
 
 <header>
 
-<!-- LEFT SIDE: SOCIAL + LOGO -->
 <div style="display:flex; align-items:center;">
   
   <div class="social-icons">
@@ -263,7 +276,7 @@ font-size:12px;
 <div class="hero">
 <div>
 <h1>Elite <em>Salon</em></h1>
-<p>Get styled by San Jose’s most creative professionals. From edgy cuts to dimensional color, we design standout looks for the Bay Area trendsetter.</p>
+<p>Get styled by San Jose’s most creative professionals.</p>
 <a class="cta-btn" onclick="showTab(event, 'booking')">Book Appointment</a>
 </div>
 </div>
@@ -316,39 +329,21 @@ font-size:12px;
 <div class="info">
 <div class="info-text">
 <h2>Visit Us</h2>
+
 <p>📍 6049 Snell Ave, San Jose, CA 95123</p>
 <p>📞 (408) 838-4511</p>
-<p>⏰ Monday: 10AM–6PM</p>
-<p>⏰ Tuesday: 10AM–6PM</p>
-<p>⏰ Wednesday: 10AM–6PM</p>
-<p>⏰ Thursday: 10AM–6PM</p>
-<p>⏰ Friday:0AM–6PM</p>
-<p>⏰ Saturday: 10AM–6PM</p>
-<p>⏰ Sunday: Closed</p>
+
+<!-- 🔥 ONLY TODAY STATUS -->
+<div id="status"></div>
+
+<p>Mon–Sat: 9AM – 6PM</p>
+<p>Sunday: Closed</p>
+
 </div>
 
 <div>
 <iframe src="https://maps.google.com/maps?q=6049+Snell+Ave+San+Jose+CA+95123&z=15&output=embed"></iframe>
 </div>
-</div>
-</section>
-
-<!-- IMAGES -->
-<section id="images" class="section">
-<div class="gallery">
-
-<img src="assets/images/Screenshot_20260408_150057_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150104_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150118_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150143_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150205_Chrome.jpg">
-<img src="assets/images/o%20(1).jpg">
-<img src="assets/images/o%20(2).jpg">
-<img src="assets/images/o%20(3).jpg">
-<img src="assets/images/o%20(4).jpg">
-<img src="assets/images/o.jpg">
-<img src="assets/images/OLC.webp.jpg">
-
 </div>
 </section>
 
@@ -385,6 +380,32 @@ t.classList.remove('active');
 event.currentTarget.classList.add('active');
 }
 
+/* 🔥 TODAY ONLY OPEN/CLOSED */
+function updateStatus() {
+const now = new Date();
+const day = now.getDay(); // 0 = Sunday
+const hour = now.getHours();
+
+let isOpen = false;
+
+// Sunday closed
+if (day === 0) {
+isOpen = false;
+} 
+// Mon–Sat 9AM–6PM
+else {
+isOpen = (hour >= 9 && hour < 18);
+}
+
+document.getElementById("status").innerHTML =
+isOpen
+? `<span class="open">Open Now</span>`
+: `<span class="closed">Closed</span>`;
+}
+
+updateStatus();
+setInterval(updateStatus, 60000);
+
 function openBooking() {
 document.getElementById("bookingFrame").style.display = "block";
 }
@@ -392,5 +413,3 @@ document.getElementById("bookingFrame").style.display = "block";
 
 </body>
 </html>
-
-
