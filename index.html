@@ -63,6 +63,7 @@ transform:scale(1.1);
 opacity:0.8;
 }
 
+/* LOGO */
 .logo {
 font-family:'Cormorant Garamond', serif;
 font-size:22px;
@@ -179,14 +180,6 @@ padding:60px;
 text-align:center;
 }
 
-.booking-box iframe {
-display:none;
-width:100%;
-height:650px;
-border:none;
-border-radius:10px;
-}
-
 /* GALLERY */
 .gallery {
 padding:90px 40px;
@@ -205,6 +198,17 @@ transition:0.3s;
 
 .gallery img:hover {
 transform:scale(1.03);
+}
+
+/* STATUS */
+.open {
+color:limegreen;
+font-weight:bold;
+}
+
+.closed {
+color:red;
+font-weight:bold;
 }
 
 /* FOOTER */
@@ -230,6 +234,7 @@ font-size:12px;
 
 <div style="display:flex; align-items:center;">
   
+  <!-- SOCIAL ICONS -->
   <div class="social-icons">
     <a href="https://www.facebook.com/people/Elite-Salon-Spa/100063563171901/#" target="_blank">
       <img src="assets/images/facebook.jpg" alt="Facebook">
@@ -241,7 +246,6 @@ font-size:12px;
   </div>
 
   <div class="logo">Elite <span>Salon</span></div>
-
 </div>
 
 <nav class="nav">
@@ -262,50 +266,8 @@ font-size:12px;
 <div class="hero">
 <div>
 <h1>Elite <em>Salon</em></h1>
-<p>Get styled by San Jose’s most creative professionals. From edgy cuts to dimensional color, we design standout looks for the Bay Area trendsetter.</p>
+<p>Get styled by San Jose’s most creative professionals.</p>
 <a class="cta-btn" onclick="showTab(event, 'booking')">Book Appointment</a>
-</div>
-</div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="section">
-<div class="info">
-<div class="info-text">
-<h2>Services</h2>
-<p>✂️ Haircuts & Styling</p>
-<p>🎨 Coloring & Highlights</p>
-<p>💇 Treatments & Conditioning</p>
-<p>✨ Special Styling</p>
-</div>
-
-<div class="info-text">
-<h2>Why Choose Us</h2>
-<p>Luxury salon experience with expert stylists.</p>
-</div>
-</div>
-</section>
-
-<!-- PROMOTION -->
-<section id="promo" class="section">
-<div class="booking-box">
-<h2>Current Promotions</h2>
-<p>10% OFF First Visit</p>
-<p>Free Treatment with Color Service</p>
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-<div class="info">
-<div class="info-text">
-<h2>About Us</h2>
-<p>Elite Salon delivers premium beauty services.</p>
-</div>
-
-<div class="info-text">
-<h2>Mission</h2>
-<p>Luxury service and unforgettable experience.</p>
 </div>
 </div>
 </section>
@@ -315,17 +277,17 @@ font-size:12px;
 <div class="info">
 <div class="info-text">
 <h2>Visit Us</h2>
+
 <p>📍 6049 Snell Ave, San Jose, CA 95123</p>
 <p>📞 (408) 838-4511</p>
 
-<!-- ✅ NEW OPERATING HOURS -->
-<p>⏰ Monday: 9AM – 6PM</p>
-<p>⏰ Tuesday: 9AM – 6PM</p>
-<p>⏰ Wednesday: 9AM – 6PM</p>
-<p>⏰ Thursday: 9AM – 6PM</p>
-<p>⏰ Friday: 9AM – 6PM</p>
-<p>⏰ Saturday: 9AM – 6PM</p>
-<p>⏰ Sunday: Closed</p>
+<p>Monday: <span id="mon"></span></p>
+<p>Tuesday: <span id="tue"></span></p>
+<p>Wednesday: <span id="wed"></span></p>
+<p>Thursday: <span id="thu"></span></p>
+<p>Friday: <span id="fri"></span></p>
+<p>Saturday: <span id="sat"></span></p>
+<p>Sunday: <span id="sun"></span></p>
 
 </div>
 
@@ -335,39 +297,7 @@ font-size:12px;
 </div>
 </section>
 
-<!-- IMAGES -->
-<section id="images" class="section">
-<div class="gallery">
-
-<img src="assets/images/Screenshot_20260408_150057_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150104_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150118_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150143_Chrome.jpg">
-<img src="assets/images/Screenshot_20260408_150205_Chrome.jpg">
-<img src="assets/images/o%20(1).jpg">
-<img src="assets/images/o%20(2).jpg">
-<img src="assets/images/o%20(3).jpg">
-<img src="assets/images/o%20(4).jpg">
-<img src="assets/images/o.jpg">
-<img src="assets/images/OLC.webp.jpg">
-
-</div>
-</section>
-
-<!-- BOOKING -->
-<section id="booking" class="section">
-<div class="booking-box">
-<h2>Book Appointment</h2>
-<p>Click below to open booking system</p>
-
-<a class="cta-btn" onclick="openBooking()">Open Booking</a>
-
-<iframe id="bookingFrame"
-src="https://www.jotform.com/build/260986452561162?s=templates">
-</iframe>
-</div>
-</section>
-
+<!-- FOOTER -->
 <footer>
 © 2026 Elite Salon · San Jose, CA
 </footer>
@@ -387,10 +317,38 @@ t.classList.remove('active');
 event.currentTarget.classList.add('active');
 }
 
-function openBooking() {
-document.getElementById("bookingFrame").style.display = "block";
+/* STATUS FUNCTION */
+function setStatus(id, isOpen) {
+document.getElementById(id).innerHTML =
+isOpen ? `<span class="open">Open Now</span>` : `<span class="closed">Closed</span>`;
 }
+
+/* REAL TIME OPEN/CLOSE LOGIC */
+function updateStatus() {
+const now = new Date();
+const day = now.getDay(); // 0 Sun - 6 Sat
+const hour = now.getHours();
+
+const isOpen = (hour >= 9 && hour < 18);
+
+/* Mon-Fri */
+setStatus("mon", (day >= 1 && day <= 5) && isOpen);
+setStatus("tue", (day >= 1 && day <= 5) && isOpen);
+setStatus("wed", (day >= 1 && day <= 5) && isOpen);
+setStatus("thu", (day >= 1 && day <= 5) && isOpen);
+setStatus("fri", (day >= 1 && day <= 5) && isOpen);
+
+/* Saturday */
+setStatus("sat", (day === 6) && isOpen);
+
+/* Sunday always closed */
+setStatus("sun", false);
+}
+
+updateStatus();
+setInterval(updateStatus, 60000); // updates every minute
 </script>
 
 </body>
 </html>
+
