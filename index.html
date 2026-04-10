@@ -43,6 +43,7 @@ color:white;
 z-index:100;
 }
 
+/* NEW: SOCIAL ICONS */
 .social-icons {
 display:flex;
 align-items:center;
@@ -206,17 +207,6 @@ transition:0.3s;
 transform:scale(1.03);
 }
 
-/* STATUS COLORS */
-.open {
-color:limegreen;
-font-weight:bold;
-}
-
-.closed {
-color:red;
-font-weight:bold;
-}
-
 /* FOOTER */
 footer {
 padding:20px;
@@ -238,6 +228,7 @@ font-size:12px;
 
 <header>
 
+<!-- LEFT SIDE: SOCIAL + LOGO -->
 <div style="display:flex; align-items:center;">
   
   <div class="social-icons">
@@ -267,24 +258,67 @@ font-size:12px;
 <div>📞 (408) 838-4511</div>
 </header>
 
+<!-- HOME -->
+<section id="home" class="section active">
+<div class="hero">
+<div>
+<h1>Elite <em>Salon</em></h1>
+<p>Get styled by San Jose’s most creative professionals. From edgy cuts to dimensional color, we design standout looks for the Bay Area trendsetter.</p>
+<a class="cta-btn" onclick="showTab(event, 'booking')">Book Appointment</a>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+<div class="info">
+<div class="info-text">
+<h2>Services</h2>
+<p>✂️ Haircuts & Styling</p>
+<p>🎨 Coloring & Highlights</p>
+<p>💇 Treatments & Conditioning</p>
+<p>✨ Special Styling</p>
+</div>
+
+<div class="info-text">
+<h2>Why Choose Us</h2>
+<p>Luxury salon experience with expert stylists.</p>
+</div>
+</div>
+</section>
+
+<!-- PROMOTION -->
+<section id="promo" class="section">
+<div class="booking-box">
+<h2>Current Promotions</h2>
+<p>10% OFF First Visit</p>
+<p>Free Treatment with Color Service</p>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+<div class="info">
+<div class="info-text">
+<h2>About Us</h2>
+<p>Elite Salon delivers premium beauty services.</p>
+</div>
+
+<div class="info-text">
+<h2>Mission</h2>
+<p>Luxury service and unforgettable experience.</p>
+</div>
+</div>
+</section>
+
 <!-- LOCATION -->
 <section id="location" class="section">
 <div class="info">
 <div class="info-text">
 <h2>Visit Us</h2>
-
 <p>📍 6049 Snell Ave, San Jose, CA 95123</p>
 <p>📞 (408) 838-4511</p>
-
-<!-- DAILY HOURS -->
-<p>Monday <span id="mon"></span></p>
-<p>Tuesday <span id="tue"></span></p>
-<p>Wednesday <span id="wed"></span></p>
-<p>Thursday <span id="thu"></span></p>
-<p>Friday <span id="fri"></span></p>
-<p>Saturday <span id="sat"></span></p>
-<p>Sunday <span id="sun"></span></p>
-
+<p>⏰ Mon–Sat: 10AM–6PM</p>
 </div>
 
 <div>
@@ -293,7 +327,38 @@ font-size:12px;
 </div>
 </section>
 
-<!-- (ALL OTHER SECTIONS UNCHANGED — SAME AS YOUR ORIGINAL) -->
+<!-- IMAGES -->
+<section id="images" class="section">
+<div class="gallery">
+
+<img src="assets/images/Screenshot_20260408_150057_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150104_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150118_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150143_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150205_Chrome.jpg">
+<img src="assets/images/o%20(1).jpg">
+<img src="assets/images/o%20(2).jpg">
+<img src="assets/images/o%20(3).jpg">
+<img src="assets/images/o%20(4).jpg">
+<img src="assets/images/o.jpg">
+<img src="assets/images/OLC.webp.jpg">
+
+</div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="section">
+<div class="booking-box">
+<h2>Book Appointment</h2>
+<p>Click below to open booking system</p>
+
+<a class="cta-btn" onclick="openBooking()">Open Booking</a>
+
+<iframe id="bookingFrame"
+src="https://www.jotform.com/build/260986452561162?s=templates">
+</iframe>
+</div>
+</section>
 
 <footer>
 © 2026 Elite Salon · San Jose, CA
@@ -314,30 +379,12 @@ t.classList.remove('active');
 event.currentTarget.classList.add('active');
 }
 
-function setStatus(id, isOpen) {
-document.getElementById(id).innerHTML =
-isOpen ? `<span class="open">Open Now</span>` : `<span class="closed">Closed</span>`;
+function openBooking() {
+document.getElementById("bookingFrame").style.display = "block";
 }
-
-function updateHoursStatus() {
-const now = new Date();
-const day = now.getDay(); // 0 Sun - 6 Sat
-const hour = now.getHours();
-
-const isOpen = hour >= 9 && hour < 18;
-
-setStatus("mon", (day >= 1 && day <= 5) && isOpen);
-setStatus("tue", (day >= 1 && day <= 5) && isOpen);
-setStatus("wed", (day >= 1 && day <= 5) && isOpen);
-setStatus("thu", (day >= 1 && day <= 5) && isOpen);
-setStatus("fri", (day >= 1 && day <= 5) && isOpen);
-setStatus("sat", (day === 6) && isOpen);
-setStatus("sun", false);
-}
-
-updateHoursStatus();
 </script>
 
 </body>
 </html>
+
 
