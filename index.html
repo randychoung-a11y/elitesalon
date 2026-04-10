@@ -201,7 +201,7 @@ border:none;
 border-radius:10px;
 }
 
-/* GALLERY */
+/* GALLERY (RESTORED) */
 .gallery {
 padding:90px 40px;
 display:grid;
@@ -255,7 +255,6 @@ font-size:12px;
   </div>
 
   <div class="logo">Elite <span>Salon</span></div>
-
 </div>
 
 <nav class="nav">
@@ -333,7 +332,6 @@ font-size:12px;
 <p>📍 6049 Snell Ave, San Jose, CA 95123</p>
 <p>📞 (408) 838-4511</p>
 
-<!-- 🔥 ONLY TODAY STATUS -->
 <div id="status"></div>
 
 <p>Mon–Sat: 9AM – 6PM</p>
@@ -344,6 +342,25 @@ font-size:12px;
 <div>
 <iframe src="https://maps.google.com/maps?q=6049+Snell+Ave+San+Jose+CA+95123&z=15&output=embed"></iframe>
 </div>
+</div>
+</section>
+
+<!-- IMAGES (RESTORED) -->
+<section id="images" class="section">
+<div class="gallery">
+
+<img src="assets/images/Screenshot_20260408_150057_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150104_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150118_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150143_Chrome.jpg">
+<img src="assets/images/Screenshot_20260408_150205_Chrome.jpg">
+<img src="assets/images/o%20(1).jpg">
+<img src="assets/images/o%20(2).jpg">
+<img src="assets/images/o%20(3).jpg">
+<img src="assets/images/o%20(4).jpg">
+<img src="assets/images/o.jpg">
+<img src="assets/images/OLC.webp.jpg">
+
 </div>
 </section>
 
@@ -380,27 +397,15 @@ t.classList.remove('active');
 event.currentTarget.classList.add('active');
 }
 
-/* 🔥 TODAY ONLY OPEN/CLOSED */
 function updateStatus() {
 const now = new Date();
-const day = now.getDay(); // 0 = Sunday
+const day = now.getDay();
 const hour = now.getHours();
 
-let isOpen = false;
-
-// Sunday closed
-if (day === 0) {
-isOpen = false;
-} 
-// Mon–Sat 9AM–6PM
-else {
-isOpen = (hour >= 9 && hour < 18);
-}
+let isOpen = (day !== 0 && hour >= 9 && hour < 18);
 
 document.getElementById("status").innerHTML =
-isOpen
-? `<span class="open">Open Now</span>`
-: `<span class="closed">Closed</span>`;
+isOpen ? `<span class="open">Open Now</span>` : `<span class="closed">Closed</span>`;
 }
 
 updateStatus();
@@ -413,3 +418,4 @@ document.getElementById("bookingFrame").style.display = "block";
 
 </body>
 </html>
+
