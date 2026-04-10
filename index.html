@@ -8,9 +8,6 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Font Awesome (for real icons) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 body {
   margin: 0;
@@ -38,14 +35,19 @@ header h1 {
 
 .social-icons a {
   margin: 0 10px;
-  font-size: 22px;
-  color: #333;
-  text-decoration: none;
-  transition: 0.3s;
+  display: inline-block;
 }
 
-.social-icons a:hover {
-  color: #c59d5f;
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
 }
 
 /* Container */
@@ -96,7 +98,6 @@ form button {
 form button:hover {
   background: #a8844d;
 }
-
 </style>
 </head>
 
@@ -105,13 +106,13 @@ form button:hover {
 <header>
   <h1>Elite Salon</h1>
 
-  <!-- Social Icons -->
+  <!-- Social Icons (USING YOUR IMAGES) -->
   <div class="social-icons">
     <a href="#" target="_blank">
-      <i class="fab fa-facebook"></i>
+      <img src="assets/images/facebook.jpg" alt="Facebook">
     </a>
     <a href="#" target="_blank">
-      <i class="fab fa-yelp"></i>
+      <img src="assets/images/yelp.jpg" alt="Yelp">
     </a>
   </div>
 </header>
@@ -156,4 +157,6 @@ form button:hover {
 
 </body>
 </html>
+
+
 
